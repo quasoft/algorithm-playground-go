@@ -1,3 +1,3 @@
-# algorithm-playground-go
+# goalgorithms
 
 A bunch of experiments with algorithm implementations in Go language.
