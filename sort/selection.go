@@ -14,3 +14,18 @@ func SelectionSort(a []int) {
 		a[i], a[min] = a[min], a[i]
 	}
 }
+
+// SelectionSort is variant of selection sort with temp varaible for min value.
+func SelectionSortTemp(a []int) {
+	for i := 0; i < len(a)-1; i++ {
+		min := a[i]
+		m := i
+		for k := i + 1; k < len(a); k++ {
+			if a[k] < min {
+				min = a[k]
+				m = k
+			}
+		}
+		a[i], a[m] = min, a[i]
+	}
+}
