@@ -16,6 +16,8 @@ func TestSort(t *testing.T) {
 		{"InsertionSortShift", InsertionSortShift},
 		{"SelectionSort", SelectionSort},
 		{"SelectionSortTemp", SelectionSortTemp},
+		{"BubbleSort", BubbleSort},
+		{"BubbleSortTwoLoops", BubbleSortTwoLoops},
 	}
 	tests := []struct {
 		name string
@@ -71,6 +73,8 @@ func BenchmarkSort(b *testing.B) {
 		{"InsertionSortShift", InsertionSortShift},
 		{"SelectionSort", SelectionSort},
 		{"SelectionSortTemp", SelectionSortTemp},
+		{"BubbleSort", BubbleSort},
+		{"BubbleSortTwoLoops", BubbleSortTwoLoops},
 	}
 	for _, tt := range tests {
 		for _, impl := range implementations {
