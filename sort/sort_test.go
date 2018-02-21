@@ -6,11 +6,14 @@ import (
 	"testing"
 )
 
-func TestSelectionSort(t *testing.T) {
+func TestSort(t *testing.T) {
 	implementations := []struct {
 		name string
 		sort func([]int)
 	}{
+		{"InsertionSortSwap", InsertionSortSwap},
+		{"InsertionSortSwapOnce", InsertionSortSwapOnce},
+		{"InsertionSortShift", InsertionSortShift},
 		{"SelectionSort", SelectionSort},
 		{"SelectionSortTemp", SelectionSortTemp},
 	}
@@ -42,14 +45,14 @@ func TestSelectionSort(t *testing.T) {
 				impl.sort(tt.list)
 				got := tt.list
 				if !reflect.DeepEqual(got, tt.want) {
-					t.Errorf("%s(%v) = %v, want %v", impl.name, tt.list, got, tt.want)
+					t.Fatalf("%s(%v) = %v, want %v", impl.name, tt.list, got, tt.want)
 				}
 			})
 		}
 	}
 }
 
-func BenchmarkSelectionSort(b *testing.B) {
+func BenchmarkSort(b *testing.B) {
 	tests := [][]int{
 		[]int{4, 1, 9, 6, 2, 5, 3, 7, 8, 0},
 		[]int{
@@ -63,6 +66,9 @@ func BenchmarkSelectionSort(b *testing.B) {
 		name string
 		sort func([]int)
 	}{
+		{"InsertionSortSwap", InsertionSortSwap},
+		{"InsertionSortSwapOnce", InsertionSortSwapOnce},
+		{"InsertionSortShift", InsertionSortShift},
 		{"SelectionSort", SelectionSort},
 		{"SelectionSortTemp", SelectionSortTemp},
 	}
