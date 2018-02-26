@@ -18,6 +18,7 @@ func TestSort(t *testing.T) {
 		{"SelectionSortTemp", SelectionSortTemp},
 		{"BubbleSort", BubbleSort},
 		{"BubbleSortTwoLoops", BubbleSortTwoLoops},
+		{"MergeSort", MergeSort},
 	}
 	tests := []struct {
 		name string
@@ -43,11 +44,13 @@ func TestSort(t *testing.T) {
 	}
 	for _, impl := range implementations {
 		for _, tt := range tests {
+			original := make([]int, len(tt.list))
+			copy(original, tt.list)
 			t.Run(tt.name, func(t *testing.T) {
 				impl.sort(tt.list)
 				got := tt.list
 				if !reflect.DeepEqual(got, tt.want) {
-					t.Fatalf("%s(%v) = %v, want %v", impl.name, tt.list, got, tt.want)
+					t.Fatalf("%s(%v) = %v, want %v", impl.name, original, got, tt.want)
 				}
 			})
 		}
