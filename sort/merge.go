@@ -7,10 +7,10 @@ func mergeTopDown(a []int, b []int, i, size int) {
 	rsize := size - lsize
 
 	if lsize > 1 {
-		merge(a, b, l, lsize)
+		mergeTopDown(a, b, l, lsize)
 	}
 	if rsize > 1 {
-		merge(a, b, r, rsize)
+		mergeTopDown(a, b, r, rsize)
 	}
 
 	lmax := l + lsize
