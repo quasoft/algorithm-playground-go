@@ -1,6 +1,6 @@
 package goalgorithms
 
-func merge(a []int, b []int, i, size int) {
+func mergeTopDown(a []int, b []int, i, size int) {
 	l := i
 	lsize := size/2 + size%2
 	r := i + lsize
@@ -39,8 +39,8 @@ func merge(a []int, b []int, i, size int) {
 	}
 }
 
-// MergeSort performs in-place sort of int slice in ascending order.
-func MergeSort(a []int) {
+// MergeSortTopDown performs in-place sort of int slice in ascending order.
+func MergeSortTopDown(a []int) {
 	b := make([]int, len(a))
-	merge(a, b, 0, len(a))
+	mergeTopDown(a, b, 0, len(a))
 }
