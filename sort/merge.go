@@ -86,3 +86,36 @@ func MergeSortTopDown2(a []int) {
 	b := make([]int, len(a))
 	mergeTopDown2(a, b, 0, len(a))
 }
+
+func mergeTopDown3(a []int, b []int, left, right int) {
+	middle := left + ((right - left) / 2)
+
+	if middle-left > 1 {
+		mergeTopDown3(a, b, left, middle)
+	}
+	if right-middle > 1 {
+		mergeTopDown3(a, b, middle, right)
+	}
+
+	l := left
+	r := middle
+	for z := left; z < right; z++ {
+		if l < middle && (r == right || a[l] <= a[r]) {
+			b[z] = a[l]
+			l++
+		} else {
+			b[z] = a[r]
+			r++
+		}
+	}
+
+	for z := left; z < right; z++ {
+		a[z] = b[z]
+	}
+}
+
+// MergeSortTopDown3 performs in-place sort of int slice in ascending order.
+func MergeSortTopDown3(a []int) {
+	b := make([]int, len(a))
+	mergeTopDown3(a, b, 0, len(a))
+}
