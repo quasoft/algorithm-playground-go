@@ -154,3 +154,36 @@ func MergeSortBottomUp1(a []int) {
 		s *= 2
 	}
 }
+
+func min(a, b int) int {
+	if a < b {
+		return a
+	}
+	return b
+}
+
+// MergeSortBottomUp2 performs in-place sort of int slice in ascending order.
+func MergeSortBottomUp2(a []int) {
+	b := make([]int, len(a), len(a))
+	for s := 1; s < len(a); s *= 2 {
+		for left := 0; left < len(a); left += s * 2 {
+			l := left
+			r := left + s
+			ls := min(r, len(a))
+			rs := min(r+s, len(a))
+			for z := left; z < rs; z++ {
+				if l < ls && (r >= rs || a[l] <= a[r]) {
+					b[z] = a[l]
+					l++
+				} else {
+					b[z] = a[r]
+					r++
+				}
+			}
+
+			for z := left; z < rs; z++ {
+				a[z] = b[z]
+			}
+		}
+	}
+}
