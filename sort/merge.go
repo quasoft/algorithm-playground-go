@@ -41,7 +41,7 @@ func mergeTopDown(a []int, b []int, i, size int) {
 
 // MergeSortTopDown performs in-place sort of int slice in ascending order.
 func MergeSortTopDown(a []int) {
-	b := make([]int, len(a))
+	b := make([]int, len(a), len(a))
 	mergeTopDown(a, b, 0, len(a))
 }
 
@@ -83,7 +83,7 @@ func mergeTopDown2(a []int, b []int, left, right int) {
 
 // MergeSortTopDown2 performs in-place sort of int slice in ascending order.
 func MergeSortTopDown2(a []int) {
-	b := make([]int, len(a))
+	b := make([]int, len(a), len(a))
 	mergeTopDown2(a, b, 0, len(a))
 }
 
@@ -116,6 +116,6 @@ func mergeTopDown3(a []int, b []int, left, right int) {
 
 // MergeSortTopDown3 performs in-place sort of int slice in ascending order.
 func MergeSortTopDown3(a []int) {
-	b := make([]int, len(a))
+	b := make([]int, len(a), len(a))
 	mergeTopDown3(a, b, 0, len(a))
 }
