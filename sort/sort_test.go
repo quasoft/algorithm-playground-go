@@ -46,13 +46,13 @@ func TestSort(t *testing.T) {
 	}
 	for _, impl := range implementations {
 		for _, tt := range tests {
-			original := make([]int, len(tt.list))
-			copy(original, tt.list)
+			tosort := make([]int, len(tt.list))
+			copy(tosort, tt.list)
 			t.Run(tt.name, func(t *testing.T) {
-				impl.sort(tt.list)
-				got := tt.list
+				impl.sort(tosort)
+				got := tosort
 				if !reflect.DeepEqual(got, tt.want) {
-					t.Fatalf("%s(%v) = %v, want %v", impl.name, original, got, tt.want)
+					t.Fatalf("%s(%v) = %v, want %v", impl.name, tt.list, got, tt.want)
 				}
 			})
 		}
@@ -98,10 +98,12 @@ func BenchmarkSort(b *testing.B) {
 	}
 	for _, tt := range tests {
 		for _, impl := range implementations {
-			b.Run(impl.name+fmt.Sprintf("%d", len(tt)), func(b *testing.B) {
+			tosort := make([]int, len(tt))
+			copy(tosort, tt)
+			b.Run(impl.name+fmt.Sprintf("%d", len(tosort)), func(b *testing.B) {
 				for i := 0; i < b.N; i++ {
-					c := make([]int, len(tt))
-					copy(c, tt)
+					c := make([]int, len(tosort))
+					copy(c, tosort)
 					impl.sort(c)
 				}
 			})
