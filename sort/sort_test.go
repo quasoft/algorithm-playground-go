@@ -100,13 +100,11 @@ func BenchmarkSort(b *testing.B) {
 	}
 	for _, tt := range tests {
 		for _, impl := range implementations {
-			tosort := make([]int, len(tt))
-			copy(tosort, tt)
-			b.Run(impl.name+fmt.Sprintf("%d", len(tosort)), func(b *testing.B) {
+			b.Run(impl.name+fmt.Sprintf("%d", len(tt)), func(b *testing.B) {
 				for i := 0; i < b.N; i++ {
-					c := make([]int, len(tosort))
-					copy(c, tosort)
-					impl.sort(c)
+					tosort := make([]int, len(tt))
+					copy(tosort, tt)
+					impl.sort(tosort)
 				}
 			})
 		}
