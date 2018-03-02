@@ -119,3 +119,38 @@ func MergeSortTopDown3(a []int) {
 	b := make([]int, len(a), len(a))
 	mergeTopDown3(a, b, 0, len(a))
 }
+
+// MergeSortBottomUp1 performs in-place sort of int slice in ascending order.
+func MergeSortBottomUp1(a []int) {
+	b := make([]int, len(a), len(a))
+	s := 1
+	for s < len(a) {
+		for left, right := 0, s; left < len(a); left, right = left+s*2, right+s*2 {
+			z := 0
+			l := left
+			ls := l + s
+			if ls > len(a) {
+				ls = len(a)
+			}
+			r := right
+			rs := r + s
+			if rs > len(a) {
+				rs = len(a)
+			}
+			for l < ls || r < rs {
+				if l < ls && (r >= rs || a[l] <= a[r]) {
+					b[z] = a[l]
+					l++
+				} else {
+					b[z] = a[r]
+					r++
+				}
+				z++
+			}
+			for m := 0; m < z; m++ {
+				a[left+m] = b[m]
+			}
+		}
+		s *= 2
+	}
+}

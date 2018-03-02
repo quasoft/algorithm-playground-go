@@ -21,6 +21,7 @@ func TestSort(t *testing.T) {
 		{"MergeSortTopDown", MergeSortTopDown},
 		{"MergeSortTopDown2", MergeSortTopDown2},
 		{"MergeSortTopDown3", MergeSortTopDown3},
+		{"MergeSortBottomUp1", MergeSortBottomUp1},
 	}
 	tests := []struct {
 		name string
@@ -95,6 +96,7 @@ func BenchmarkSort(b *testing.B) {
 		{"MergeSortTopDown", MergeSortTopDown},
 		{"MergeSortTopDown2", MergeSortTopDown2},
 		{"MergeSortTopDown3", MergeSortTopDown3},
+		{"MergeSortBottomUp1", MergeSortBottomUp1},
 	}
 	for _, tt := range tests {
 		for _, impl := range implementations {
