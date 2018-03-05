@@ -23,6 +23,9 @@ func TestSort(t *testing.T) {
 		{"MergeSortTopDown3", MergeSortTopDown3},
 		{"MergeSortBottomUp1", MergeSortBottomUp1},
 		{"MergeSortBottomUp2", MergeSortBottomUp2},
+		{"QuickSortHoare", QuickSortHoare},
+		{"QuickSortHoareM3", QuickSortHoareM3},
+		{"QuickSortLomuto", QuickSortLomuto},
 	}
 	tests := []struct {
 		name string
@@ -99,6 +102,9 @@ func BenchmarkSort(b *testing.B) {
 		{"MergeSortTopDown3", MergeSortTopDown3},
 		{"MergeSortBottomUp1", MergeSortBottomUp1},
 		{"MergeSortBottomUp2", MergeSortBottomUp2},
+		{"QuickSortHoare", QuickSortHoare},
+		{"QuickSortHoareM3", QuickSortHoareM3},
+		{"QuickSortLomuto", QuickSortLomuto},
 	}
 	for _, tt := range tests {
 		for _, impl := range implementations {
