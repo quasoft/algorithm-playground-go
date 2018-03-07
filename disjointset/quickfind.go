@@ -4,8 +4,8 @@ package goalgorithms
 // https://www.coursera.org/learn/algorithms-part1/lecture/EcF3P/quick-find
 
 // QuickFindSet represent a union find data structure.
-// Indices are the number of the element.
-// Values are the id of the components.
+// Indices are the numbers of the elements.
+// Values are the ids of the components.
 type QuickFindSet struct {
 	ids []int
 }
@@ -25,14 +25,14 @@ func (s *QuickFindSet) Size() int {
 	return len(s.ids)
 }
 
-// Clone creates a deep copy of QuickFindSet
+// Clone creates a deep copy of QuickFindSet.
 func (s *QuickFindSet) Clone() *QuickFindSet {
 	new := NewQuickFindSet(s.Size())
 	copy(new.ids, s.ids)
 	return new
 }
 
-// ID returns the ID of the component to which a is connected.
+// ID returns the ID of the component to which element is connected.
 func (s *QuickFindSet) ID(element int) int {
 	return s.ids[element]
 }
