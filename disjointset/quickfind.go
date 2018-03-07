@@ -6,12 +6,14 @@ package goalgorithms
 // QuickFindSet represent a union find data structure.
 // Indices are the number of the element.
 // Values are the id of the components.
-type QuickFindSet []int
+type QuickFindSet struct {
+	ids []int
+}
 
 // NewQuickFindSet creates a new set with the specified size,
 // with IDs equal to the number of the element.
-func NewQuickFindSet(size int) QuickFindSet {
-	s := QuickFindSet(make([]int, size, size))
+func NewQuickFindSet(size int) *QuickFindSet {
+	s := &QuickFindSet{make([]int, size, size)}
 	for i := 0; i < s.Size(); i++ {
 		s.SetID(i, i)
 	}
@@ -20,17 +22,17 @@ func NewQuickFindSet(size int) QuickFindSet {
 
 // Size returns the number of elements in the set.
 func (s *QuickFindSet) Size() int {
-	return len([]int(*s))
+	return len(s.ids)
 }
 
 // ID returns the ID of the component to which a is connected.
 func (s *QuickFindSet) ID(element int) int {
-	return []int(*s)[element]
+	return s.ids[element]
 }
 
 // SetID changes the ID of the specified element.
 func (s *QuickFindSet) SetID(element, id int) {
-	[]int(*s)[element] = id
+	s.ids[element] = id
 }
 
 // Union creates a connection between the specified elements,
