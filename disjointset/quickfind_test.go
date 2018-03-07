@@ -34,8 +34,7 @@ func TestQuickFindSet_Union(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := NewQuickFindSet(tt.set.Size())
-			got.ids = tt.set.ids
+			got := tt.set.Clone()
 			got.Union(tt.a, tt.b)
 			if !reflect.DeepEqual(*got, tt.want) {
 				t.Errorf("QuickFindSet.Union(%v, %v, %v) = %v, want %v", tt.set, tt.a, tt.b, got, tt.want)

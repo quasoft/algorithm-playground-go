@@ -25,6 +25,13 @@ func (s *QuickFindSet) Size() int {
 	return len(s.ids)
 }
 
+// Clone creates a deep copy of QuickFindSet
+func (s *QuickFindSet) Clone() *QuickFindSet {
+	new := NewQuickFindSet(s.Size())
+	copy(new.ids, s.ids)
+	return new
+}
+
 // ID returns the ID of the component to which a is connected.
 func (s *QuickFindSet) ID(element int) int {
 	return s.ids[element]
