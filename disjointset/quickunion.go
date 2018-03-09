@@ -5,7 +5,7 @@ package goalgorithms
 
 // QuickUnionSet represent a union find data structure.
 // Indices are the numbers of the elements.
-// Values are the ids of the components.
+// Values are the parent ids of the components.
 type QuickUnionSet struct {
 	ids []int
 }
