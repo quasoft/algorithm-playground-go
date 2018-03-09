@@ -18,6 +18,14 @@ func TestNewQuickFindSet(t *testing.T) {
 	}
 }
 
+func TestQuickFindSet_Clone(t *testing.T) {
+	want := QuickFindSet{[]int{0, 1, 2, 3, 4}}
+	got := want.Clone()
+	if !reflect.DeepEqual(*got, want) {
+		t.Errorf("%v.Clone() = %v, want %v", want, got, want)
+	}
+}
+
 func TestQuickFindSet_Union(t *testing.T) {
 	tests := []struct {
 		name string

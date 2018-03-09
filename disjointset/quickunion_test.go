@@ -18,6 +18,14 @@ func TestNewQuickUnionSet(t *testing.T) {
 	}
 }
 
+func TestQuickUnionSet_Clone(t *testing.T) {
+	want := QuickUnionSet{[]int{0, 1, 2, 3, 4}}
+	got := want.Clone()
+	if !reflect.DeepEqual(*got, want) {
+		t.Errorf("%v.Clone() = %v, want %v", want, got, want)
+	}
+}
+
 func TestQuickUnionSet_Union(t *testing.T) {
 	tests := []struct {
 		name string
