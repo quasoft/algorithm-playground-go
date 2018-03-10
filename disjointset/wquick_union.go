@@ -3,7 +3,7 @@ package goalgorithms
 // Go implementation of quick find as explained by Sedgwick at
 // https://www.coursera.org/learn/algorithms-part1/lecture/EcF3P/quick-find
 
-// WQuickUnionSet represent a union find data structure.
+// WQuickUnionSet represent a weighted union find data structure.
 type WQuickUnionSet struct {
 	// Indices are the numbers of the elements.
 	// Values are the parent ids of the components.
