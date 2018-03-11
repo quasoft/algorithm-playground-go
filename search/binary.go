@@ -6,12 +6,13 @@ func searchRecursive(needle int, haystack []int, left, right int) (int, bool) {
 	}
 
 	middle := left + (right-left)/2
-
-	idx, ok := searchRecursive(needle, haystack, left, middle)
-	if ok {
-		return idx, ok
+	if needle < haystack[middle] {
+		return searchRecursive(needle, haystack, left, middle)
+	} else if needle > haystack[middle] {
+		return searchRecursive(needle, haystack, middle, right)
+	} else {
+		return middle, true
 	}
-	return searchRecursive(needle, haystack, middle, right)
 }
 
 // BinarySearchRecursive performs a binary search for needle in haystack
