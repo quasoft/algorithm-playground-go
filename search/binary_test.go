@@ -12,6 +12,7 @@ func TestBinarySearch(t *testing.T) {
 		search func(needle int, haystack []int) (int, bool)
 	}{
 		{"BinarySearchRecursive", BinarySearchRecursive},
+		{"BinarySearchLinear", BinarySearchLinear},
 	}
 	tests := []struct {
 		name     string
@@ -117,6 +118,7 @@ func BenchmarkSearch(b *testing.B) {
 		search func(needle int, haystack []int) (int, bool)
 	}{
 		{"BinarySearchRecursive", BinarySearchRecursive},
+		{"BinarySearchLinear", BinarySearchLinear},
 	}
 	for _, tt := range tests {
 		for _, impl := range implementations {
