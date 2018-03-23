@@ -12,7 +12,6 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/quasoft/btree"
 	voronoi "github.com/quasoft/goalgorithms/voronoi"
 )
 
@@ -23,7 +22,7 @@ type D3Node struct {
 }
 
 // btreeToGraphNode converts a parabola binary tree to a tree of D3Nodes.
-func btreeToGraphNode(node *btree.Node) *D3Node {
+func btreeToGraphNode(node *voronoi.VNode) *D3Node {
 	if node == nil {
 		return nil
 	}
@@ -31,7 +30,7 @@ func btreeToGraphNode(node *btree.Node) *D3Node {
 	left := btreeToGraphNode(node.Left)
 	right := btreeToGraphNode(node.Right)
 
-	site := node.Value.(*voronoi.Arc).Site
+	site := node.Site
 	var label string
 
 	if site.X == 0 && site.Y == 0 {
@@ -52,7 +51,7 @@ func btreeToGraphNode(node *btree.Node) *D3Node {
 }
 
 // btreeToJSON converts a parabola binary tree to a JSON tree of D3 nodes.
-func btreeToJSON(node *btree.Node) []byte {
+func btreeToJSON(node *voronoi.VNode) []byte {
 	graphNode := btreeToGraphNode(node)
 	jsonTree, err := json.Marshal(graphNode)
 	if err != nil {
@@ -73,7 +72,7 @@ func main() {
 	sites := []image.Point{
 		{X: 10, Y: 20},
 		{X: 40, Y: 40},
-		{X: 150, Y: 80},
+		{X: 55, Y: 80},
 		{X: 350, Y: 120},
 	}
 
