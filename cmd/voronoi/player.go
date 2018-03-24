@@ -70,11 +70,11 @@ func main() {
 	rect := image.Rect(0, 0, width, height)
 
 	sites := []image.Point{
-		{X: 10, Y: 20},
-		{X: 40, Y: 40},
-		{X: 55, Y: 80},
+		{X: 110, Y: 20},
+		{X: 140, Y: 40},
+		{X: 155, Y: 80},
 		{X: 350, Y: 120},
-		{X: 100, Y: 240},
+		{X: 200, Y: 240},
 	}
 
 	v := voronoi.NewFromPoints(sites, rect)
