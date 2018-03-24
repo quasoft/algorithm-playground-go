@@ -74,6 +74,7 @@ func main() {
 		{X: 40, Y: 40},
 		{X: 55, Y: 80},
 		{X: 350, Y: 120},
+		{X: 100, Y: 240},
 	}
 
 	v := voronoi.NewFromPoints(sites, rect)
